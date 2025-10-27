@@ -1,52 +1,56 @@
-export default function Home() {
+"use client";
+
+import React from "react";
+
+export default function DashboardPage() {
+  const teams = [
+    { id: 1, name: "Team Name" },
+    { id: 2, name: "Team Name" },
+    { id: 3, name: "Team Name" },
+    { id: 4, name: "Team Name" },
+  ];
+
+  const handleJoin = (teamId: number, teamName: string) => {
+    console.log(`Joined Team → ID: ${teamId}, Name: ${teamName}`);
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center max-w-5xl mx-auto">
-      <p className="font-bold text-6xl">
-        Hello developer, read this before doing work.
-      </p>
-      <ul className="mt-6 text-lg font-medium list-disc list-inside">
-        <li>
-          Fonts and colors have already been defined, so don&apos;t reinvent the
-          wheel, or modify something.
-        </li>
-        <li>
-          Make components reusable and composable. Add necessary props so that
-          they can be easily customized.
-        </li>
-        <li>
-          Test components in the{" "}
-          <span className="px-1 py-0.5 border border-gray-500 bg-white rounded-md">
-            app/test/page.tsx
-          </span>{" "}
-          file, but do not push changes made to that file, only push changes to
-          the components themselves with the screenshots included.
-        </li>
-        <li>
-          Strictly adhere to what the issue describes. If you think something
-          should be changed, discuss it first before making changes.
-        </li>
-        <li>
-          Follow the existing folder structure for new components, pages, or
-          features.
-        </li>
-        <li>Do not install any new dependencies without approval.</li>
-        <li>
-          This website will be integrated with the backend, so use proper mock
-          data where necessary, as they will later be replaced with real data.
-        </li>
-        <li>
-          When using AI-generated code, please make sure to review the quality
-          and remove unnecessary comments. AI generated code will have some
-          colors from the Tailwind palette, so make sure to adjust them to match
-          our design system.
-        </li>
-        <li>
-          The master branch is always protected, create a separate branch for
-          your work and create a pull request when you are done. The pull
-          request should be made to the development branch first, not directly
-          to master. Wait for approval before merging.
-        </li>
-      </ul>
+    <main className="flex flex-col items-center justify-start min-h-screen bg-[var(--background)] py-26 px-4">
+      <section className="text-center mb-10">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6">
+          Laser Tag Dashboard
+        </h1>
+        <div className="flex flex-wrap justify-center gap-4">
+          <button className="px-6 py-2 rounded-md bg-[var(--positive)] text-white font-semibold hover:opacity-90 transition">
+            Join a Team
+          </button>
+          <button className="px-6 py-2 rounded-md bg-blue-600 text-white font-semibold hover:opacity-90 transition">
+            Create a Team
+          </button>
+        </div>
+      </section>
+
+      <section className="w-full max-w-xl bg-[var(--neutral)] border border-[var(--border)] rounded-lg shadow-sm p-6">
+        <h2 className="text-xl font-semibold mb-4 text-center">
+          Open to Join
+        </h2>
+        <ul className="space-y-3">
+          {teams.map((team) => (
+            <li
+              key={team.id}
+              className="flex items-center justify-between bg-[var(--accent)] px-4 py-3 rounded-md border border-[var(--border)]"
+            >
+              <span className="font-medium">{team.name}</span>
+              <button
+                onClick={() => handleJoin(team.id, team.name)}
+                className="px-4 py-1 bg-[var(--positive)] text-white rounded-md font-medium hover:opacity-90 transition"
+              >
+                Join
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }
