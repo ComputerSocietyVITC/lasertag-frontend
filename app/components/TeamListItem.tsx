@@ -1,4 +1,4 @@
-// app/components/ui/TeamListItem.tsx
+
 "use client";
 import React from "react";
 import type { User } from "./types";
@@ -9,8 +9,8 @@ import { UserIcon } from "./UserIcon";
 
 interface Props {
   user: User;
-  isViewerLeader?: boolean; // if viewer (current user) is team leader -> show kick button for other members
-  showLeaderTag?: boolean; // show "Team Leader" label under name
+  isViewerLeader?: boolean; 
+  showLeaderTag?: boolean; 
   onKick?: (user: User) => void;
 }
 
@@ -30,7 +30,7 @@ export default function TeamListItem({
     if (onKick) onKick(user);
   }
 
-  // 🟢 NEW: Style toggle for leader vs member
+ 
   const itemStyle = user.isLeader
     ? {
         background: "var(--accent-light)",

@@ -1,4 +1,4 @@
-// app/components/ui/icons/UserIcon.tsx
+
 import React from "react";
 
 interface Props {

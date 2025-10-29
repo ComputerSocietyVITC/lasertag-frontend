@@ -1,4 +1,4 @@
-// app/components/ui/KickConfirmationDialog.tsx
+
 "use client";
 import React from "react";
 import Button from "./Button";
