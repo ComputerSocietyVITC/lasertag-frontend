@@ -1,37 +1,29 @@
-
-"use client";
-import React from "react";
-
-type Variant = "primary" | "secondary" | "danger" | "default";
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  label: React.ReactNode;
-  variant?: Variant;
+interface Props {
+  label: string;
+  onClick: () => void;
+  variant?: "default" | "danger" | "secondary";
   className?: string;
 }
 
-const variantStyle = (v: Variant) => {
-  switch (v) {
-    case "primary":
-      return { background: "var(--positive)", color: "white", borderColor: "transparent" };
-    case "danger":
-      return { background: "var(--negative)", color: "white", borderColor: "transparent" };
-    case "secondary":
-      return { background: "var(--neutral)", color: "var(--text-primary)", borderColor: "var(--border)" };
-    default:
-      return { background: "transparent", color: "var(--text-primary)", borderColor: "var(--border)" };
-  }
-};
+export default function Button({
+  label,
+  onClick,
+  variant = "default",
+  className = "",
+}: Props) {
+  const baseClasses =
+    "px-4 py-2 rounded-md font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer";
 
-export default function Button({ label, variant = "primary", className = "", ...rest }: ButtonProps) {
-  const s = variantStyle(variant);
+  const variantClasses = {
+    default: "bg-gray-200 text-gray-800 hover:bg-gray-300 focus:ring-gray-400",
+    danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
+    secondary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500",
+  };
+
   return (
     <button
-      {...rest}
-      style={{ ...s }}
-      className={
-        "px-4 py-2 rounded-md text-sm font-medium shadow-sm transition hover:brightness-95 " + className
-      }
+      onClick={onClick}
+      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
     >
       {label}
     </button>

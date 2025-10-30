@@ -1,6 +1,5 @@
-
 "use client";
-import React from "react";
+
 import Button from "./Button";
 
 interface Props {
@@ -11,27 +10,39 @@ interface Props {
   registrationNumber?: string;
 }
 
-export default function UserProfileDialog({ open, onClose, name, phone, registrationNumber }: Props) {
+export default function UserProfileDialog({
+  open,
+  onClose,
+  name,
+  phone,
+  registrationNumber,
+}: Props) {
   if (!open) return null;
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <div className="absolute inset-0" onClick={onClose} style={{ background: "rgba(0,0,0,0.35)" }} />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div
-        role="dialog"
-        aria-modal="true"
-        className="z-60 p-6 rounded-lg w-[min(720px,90%)] shadow-lg"
-        style={{ background: "var(--neutral)", color: "var(--text-primary)" }}
+        className="z-60 w-[min(520px,90%)] rounded-lg bg-white p-6 shadow-lg"
         onClick={(e) => e.stopPropagation()}
       >
-        <h2 className="text-3xl font-bold mb-4">User Profile</h2>
-        <div className="space-y-2 mb-6">
-          <div><strong>Name:</strong> {name}</div>
-          {phone && <div><strong>Phone Number:</strong> {phone}</div>}
-          {registrationNumber && <div><strong>Registration Number:</strong> {registrationNumber}</div>}
+        <h2 className="mb-4 text-3xl font-bold text-gray-800">User Profile</h2>
+        <div className="mb-6 space-y-2 text-gray-700">
+          <div>
+            <strong>Name:</strong> {name}
+          </div>
+          {phone && (
+            <div>
+              <strong>Phone Number:</strong> {phone}
+            </div>
+          )}
+          {registrationNumber && (
+            <div>
+              <strong>Registration Number:</strong> {registrationNumber}
+            </div>
+          )}
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-end">
           <Button
-            label="Close Dialog"
+            label="Close"
             variant="secondary"
             onClick={() => {
               console.log(`Dialog closed for ${name}`);

@@ -1,4 +1,3 @@
-
 "use client";
 import React from "react";
 import type { User } from "./types";
@@ -9,8 +8,8 @@ import { UserIcon } from "./UserIcon";
 
 interface Props {
   user: User;
-  isViewerLeader?: boolean; 
-  showLeaderTag?: boolean; 
+  isViewerLeader?: boolean;
+  showLeaderTag?: boolean;
   onKick?: (user: User) => void;
 }
 
@@ -30,7 +29,6 @@ export default function TeamListItem({
     if (onKick) onKick(user);
   }
 
- 
   const itemStyle = user.isLeader
     ? {
         background: "var(--accent-light)",

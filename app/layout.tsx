@@ -1,3 +1,5 @@
+import Navbar from "./components/Navbar";
+import { AuthProvider } from "./context/AuthContext";
 import "./globals.css";
 import { Instrument_Sans } from "next/font/google";
 
@@ -16,7 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased ${instrumentSans.className}`}>
-        {children}
+        <AuthProvider>
+          <main className="flex flex-col min-h-screen bg-gray-100">
+            <Navbar />
+            <div className="flex grow">{children}</div>
+          </main>
+        </AuthProvider>
       </body>
     </html>
   );
